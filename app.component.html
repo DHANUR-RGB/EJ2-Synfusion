@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-3">
+        <div class="main">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-12 bg-dark">
+                    <div
+                        class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                        <a href="/"
+                            class="d-flex align-items-center  pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                            <span class="fs-5 d-none d-sm-inline">Synfusion Documentation| EJ2 Angular </span>
+                        </a>
+                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                            id="menu">
+
+                            <li *ngFor="let menu of menuList; let i=index"
+                                [routerLink]="menu.children.length==0? menu.path:undefined">
+                                <div class="arrowicon"></div>
+                                <a href="#submenu{{i}}" data-bs-toggle="collapse" class="nav-link px-0 align-middle"
+                                    style="color: whitesmoke;"> <span
+                                        class="ms-1 d-none d-sm-inline">{{menu.name}}</span>
+                                </a>
+                                <ul *ngIf="menu.children.length>0" class="nav flex-column ms-1 collapse"
+                                    id="submenu{{i}}" data-bs-parent="#menu">
+                                    <li class="w-100" *ngFor="let child of menu.children">
+                                        <a href="javascript:void(0)" routerLink="{{child.path}}" class="nav-link px-0"
+                                            style="color: rgb(0, 255, 4);">
+                                            <span class="d-none d-sm-inline">{{child.name}}</span> </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9 h-100">
+        <div class="h-100">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+</div>
